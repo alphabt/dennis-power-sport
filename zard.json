@@ -1,0 +1,118 @@
+{
+  "_id": "zard",
+  "startUrl": ["https://shop.officineitalianezard.it/en/products/"],
+  "selectors": [
+    {
+      "id": "brand",
+      "type": "SelectorLink",
+      "parentSelectors": ["_root"],
+      "selector": ".elements-pages__brands-container .col-6 a",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "bike",
+      "type": "SelectorLink",
+      "parentSelectors": ["brand"],
+      "selector": ".elements-pages__menu-container li a",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "product",
+      "type": "SelectorLink",
+      "parentSelectors": ["bike"],
+      "selector": "a.link-product-overlay",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "title",
+      "type": "SelectorText",
+      "parentSelectors": ["product"],
+      "selector": ".products-index__name",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "sku",
+      "type": "SelectorText",
+      "parentSelectors": ["product"],
+      "selector": ".products-index__code span",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "brand-bike",
+      "type": "SelectorText",
+      "parentSelectors": ["product"],
+      "selector": "[itemprop=\"brand\"] [itemprop=\"name\"]",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "price-current",
+      "type": "SelectorElementAttribute",
+      "parentSelectors": ["product"],
+      "selector": ".products-index__price-number",
+      "multiple": false,
+      "extractAttribute": "mc:price",
+      "delay": 0
+    },
+    {
+      "id": "price-original",
+      "type": "SelectorElementAttribute",
+      "parentSelectors": ["product"],
+      "selector": ".products-index__price--original-number",
+      "multiple": false,
+      "extractAttribute": "mc:price_was",
+      "delay": 0
+    },
+    {
+      "id": "description",
+      "type": "SelectorHTML",
+      "parentSelectors": ["product"],
+      "selector": "[itemprop=\"description\"]",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "image",
+      "type": "SelectorImage",
+      "parentSelectors": ["product"],
+      "selector": ".owl-item:not(.cloned) img",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "options-group",
+      "type": "SelectorElement",
+      "parentSelectors": ["product"],
+      "selector": ".products-index__optionals-list div",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "option-name",
+      "type": "SelectorText",
+      "parentSelectors": ["options-group"],
+      "selector": "label",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "option-price",
+      "type": "SelectorElementAttribute",
+      "parentSelectors": ["options-group"],
+      "selector": "[name=\"optionals\"]",
+      "multiple": false,
+      "extractAttribute": "mc_price",
+      "delay": 0
+    }
+  ]
+}
