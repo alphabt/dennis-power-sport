@@ -3,7 +3,7 @@
   "startUrl": ["https://shop.officineitalianezard.it/en/products/"],
   "selectors": [
     {
-      "id": "brand",
+      "id": "brand-link",
       "type": "SelectorLink",
       "parentSelectors": ["_root"],
       "selector": ".elements-pages__brands-container .col-6 a",
@@ -11,17 +11,17 @@
       "delay": 0
     },
     {
-      "id": "bike",
+      "id": "bike-link",
       "type": "SelectorLink",
-      "parentSelectors": ["brand"],
+      "parentSelectors": ["brand-link"],
       "selector": ".elements-pages__menu-container li a",
       "multiple": true,
       "delay": 0
     },
     {
-      "id": "product",
+      "id": "product-link",
       "type": "SelectorLink",
-      "parentSelectors": ["bike"],
+      "parentSelectors": ["bike-link"],
       "selector": "a.link-product-overlay",
       "multiple": true,
       "delay": 0
@@ -29,8 +29,8 @@
     {
       "id": "title",
       "type": "SelectorText",
-      "parentSelectors": ["product"],
-      "selector": ".products-index__name",
+      "parentSelectors": ["product-link"],
+      "selector": "[itemprop='name'] a",
       "multiple": false,
       "regex": "",
       "delay": 0
@@ -38,17 +38,26 @@
     {
       "id": "sku",
       "type": "SelectorText",
-      "parentSelectors": ["product"],
+      "parentSelectors": ["product-link"],
       "selector": ".products-index__code span",
       "multiple": false,
       "regex": "",
       "delay": 0
     },
     {
-      "id": "brand-bike",
+      "id": "brand",
       "type": "SelectorText",
-      "parentSelectors": ["product"],
-      "selector": "[itemprop=\"brand\"] [itemprop=\"name\"]",
+      "parentSelectors": ["product-link"],
+      "selector": ".layout__page-header span:nth-of-type(2) a",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "bike",
+      "type": "SelectorText",
+      "parentSelectors": ["product-link"],
+      "selector": ".layout__page-header span:nth-of-type(3) a",
       "multiple": false,
       "regex": "",
       "delay": 0
@@ -56,7 +65,7 @@
     {
       "id": "price-current",
       "type": "SelectorElementAttribute",
-      "parentSelectors": ["product"],
+      "parentSelectors": ["product-link"],
       "selector": ".products-index__price-number",
       "multiple": false,
       "extractAttribute": "mc:price",
@@ -65,7 +74,7 @@
     {
       "id": "price-original",
       "type": "SelectorElementAttribute",
-      "parentSelectors": ["product"],
+      "parentSelectors": ["product-link"],
       "selector": ".products-index__price--original-number",
       "multiple": false,
       "extractAttribute": "mc:price_was",
@@ -74,7 +83,7 @@
     {
       "id": "description",
       "type": "SelectorHTML",
-      "parentSelectors": ["product"],
+      "parentSelectors": ["product-link"],
       "selector": "[itemprop=\"description\"]",
       "multiple": false,
       "regex": "",
@@ -83,7 +92,7 @@
     {
       "id": "image",
       "type": "SelectorImage",
-      "parentSelectors": ["product"],
+      "parentSelectors": ["product-link"],
       "selector": ".owl-item:not(.cloned) img",
       "multiple": true,
       "delay": 0
@@ -91,7 +100,7 @@
     {
       "id": "options-group",
       "type": "SelectorElement",
-      "parentSelectors": ["product"],
+      "parentSelectors": ["product-link"],
       "selector": ".products-index__optionals-list div",
       "multiple": true,
       "delay": 0
